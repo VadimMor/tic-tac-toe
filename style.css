@@ -1,0 +1,262 @@
+* {
+	padding: 0;
+	margin: 0;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+body {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	min-height: 100vh;
+
+	background: #33CDC7;
+}
+.container {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+.player {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+.player__item {
+	display: block;
+	width: 47%;
+	height: 40px;
+	margin-bottom: 80px;
+	padding: 20px 10px;
+
+	position: relative;
+
+	line-height: 0;
+	background: #fff;
+	-webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5), 0px 0px 0 #009B95;
+	        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5), 0px 0px 0 #009B95;
+	border-radius: 20px;
+
+	font-family: sans-serif;
+	text-align: right;
+	font-size: 40px;
+	color: rgba(0, 0, 0, 0.5);
+
+	-webkit-transition: -webkit-transform 0.4s linear, -webkit-box-shadow 0.4s linear;
+
+	transition: -webkit-transform 0.4s linear, -webkit-box-shadow 0.4s linear;
+
+	transition: transform 0.4s linear, box-shadow 0.4s linear;
+
+	transition: transform 0.4s linear, box-shadow 0.4s linear, -webkit-transform 0.4s linear, -webkit-box-shadow 0.4s linear;
+}
+.player__item::before {
+	content: '';
+	min-width: 80px;
+	height: 15px;
+
+	position: absolute;
+	top: 68%;
+	left: 0%;
+
+	font-weight: 700;
+	font-size: 20px;
+	color: rgba(0, 0, 0, 0.5);
+
+	-webkit-transform: translateY(-50%);
+
+	        transform: translateY(-50%);
+}
+.player__item:first-child::before {
+	content: 'Игрок 1';
+}
+.player__item:last-child::before {
+	content: 'Игрок 2';
+}
+.player__item.active {
+	-webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5), 0px 4px 0 #009B95;
+	        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5), 0px 4px 0 #009B95;
+
+	-webkit-transform: translateY(-4px);
+
+	        transform: translateY(-4px);
+}
+.game {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	width: 300px;
+	height: 300px;
+
+	position: relative;
+
+	border-radius: 20px;
+}
+.game__cell {
+	display: block;
+	width: 33.333%;
+	height: 33.335%;
+	margin: 0;
+
+	position: relative;
+
+	cursor: pointer;
+
+	border: 4px solid #006561;
+}
+.game__cell:nth-child(3n-2) {
+	border-left: none;
+}
+.game__cell:nth-child(3n+3) {
+	border-right: none;
+}
+.game__cell:nth-child(n+4):nth-child(-n+6) {
+	border-top: none;
+	border-bottom: none;
+}
+.game__cell:nth-child(-n+3) {
+	border-top: none;
+	border-bottom: 8px solid #006561;
+}
+.game__cell:nth-child(n+7) {
+	border-top: 8px solid #006561;
+	border-bottom: none;
+}
+.game__cell.x::before {
+	content: 'X';
+
+	position: absolute;
+	top: 18%;
+	left: 50%;
+
+	font-family: sans-serif;
+	font-size: 55px;
+	font-weight: 700;
+	color: #006561;
+
+	-webkit-transform: translate(-50%);
+
+	        transform: translate(-50%);
+}
+.game__cell.o::before {
+	content: 'O';
+
+	position: absolute;
+	top: 18%;
+	left: 50%;
+
+	font-family: sans-serif;
+	font-size: 55px;
+	font-weight: 700;
+	color: #006561;
+
+	-webkit-transform: translate(-50%);
+
+	        transform: translate(-50%);
+}
+.result {
+	width: 100%;
+	height: 100%;
+
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: -1;
+
+	background: rgba(0, 101, 97, 0.8);
+	opacity: 0;
+	border-radius: 20px;
+	line-height: 300px;
+
+	font-weight: 700;
+	font-size: 30px;
+	text-align: center;
+	color: #fff;
+
+	-webkit-transition: all 0.4s linear;
+
+	transition: all 0.4s linear;
+}
+.result.active {
+	z-index: 1;
+
+	opacity: 1;
+}
+button {
+	min-width: 170px;
+	margin: 40px auto 0;
+	padding: 10px;
+
+	border: none;
+	-webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5), 0px 0px 0 #009B95;
+	        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5), 0px 0px 0 #009B95;
+	border-radius: 20px;
+	background: #fff;
+	cursor: pointer;
+
+	font-weight: 700;
+	font-size: 20px;
+	color: rgba(0, 0, 0, 0.5);
+
+	-webkit-transition: all 0.4s linear;
+
+	transition: all 0.4s linear;
+}
+button:hover {
+	-webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5), 0px 4px 0 #009B95;
+	        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5), 0px 4px 0 #009B95;
+
+	-webkit-transform: translateY(-4px);
+
+	        transform: translateY(-4px);
+}
+
+@media (max-width: 768px) {
+	.player {
+		margin-bottom: 20px
+	}
+	.player__item {
+		width: 100%;
+		margin-bottom: 20px
+	}
+	.player__item::before {
+		font-size: 25px;
+		left: 3%
+	}
+	.newGame {
+		margin-top: 20px;
+	}
+	button {
+		min-width: 250px;
+		font-size: 30px;
+	}
+}
+@media (max-width: 425px) {
+	.game {
+		width: 360px;
+		height: 360px;
+	}
+	.game__cell.x::before {
+		font-size: 65px;
+	}
+	.game__cell.o::before {
+		font-size: 65px;
+	}
+}
